@@ -4,28 +4,39 @@
 	en el sistema
 */
 public class User{
-	private String userName = "Desconocido";
-	private String email    = "example@email.com";
-	private int age         = 0;
-	private String password = "NA"; //No Asignado
-	private double height   = 0.0;
-	private double weight   = 0.0;
-	private char sex 		= 'N'; //No tiene
+	private String userName;
+	private String email;
+	private int age;
+	private String password; //No Asignado
+	private double height;
+	private double weight;
+	private char sex; //No tiene
 	private double imc      = 0.0;
 	private int frecuency   = 0;
 	private int idUser      = 0; //debe incrementar casa vez que se crea un nuevo usuario
 
 	public User(){
+		this.userName = "Desconocido";
+		this.email    = "example@email.com";
+		this.age      = 0;
+		this.password = "NA"; //No Asignado
+		this.height   = 0.0;
+		this.weight   = 0.0;
+		this.sex 	  = 'N'; //No tiene
+		this.imc      = 0.0;
+		this.frecuency= 0;
+		this.idUser   = 0;
+
 	}
 	public User(String userName, String email, int age, String password, double height, double weight, char sex){
 	    this.userName = userName;
-		this.email    = email;
+	    this.email    = email;
 		this.age      = age;
 		this.password = password;
 		this.height   = height;
 		this.weight   = weight;
 		this.sex      = sex;
-	}
+}
 	//getters
 	public String getUserName(){
 		return this.userName;
@@ -102,16 +113,16 @@ public class User{
 		manda false que quiere decir que no esta registrado en el sistema
 		*/
 	public boolean login(String name, String pass){
-		String datos[] = null;// select * from user where user_name = name and password = pass;
-		if(datos == null)
-			return false;
-		else
+		// String[] datos = null;// select * from user where user_name = name and password = pass;
+		// if(datos == null)
+			// return false;
+		// else
 			return true;
 
 	}
 
 	public void signin(){// metodo que puede guardar los datos del usuario en la base de datos
-		String querySignin = "INSERT INTO user VALUES("+
+		/*String querySignin = "INSERT INTO user VALUES("+
 							 this.idUser + ", " +
 							 this.userName + ", " +
 							 this.email + ", " +
@@ -120,7 +131,7 @@ public class User{
 							 this.height + ", " +
 							 this.sex + ", " +
 							 this.imc + ");";
-		System.out.println(querySignin);
+		System.out.println(querySignin);*/
 	}
 
 	@Override
