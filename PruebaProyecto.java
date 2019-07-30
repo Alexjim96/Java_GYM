@@ -22,6 +22,16 @@ public class PruebaProyecto{
             case 1:
                 pruebaUser();
                 break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
 
         }
     }
@@ -29,7 +39,7 @@ public class PruebaProyecto{
         User user1 = new User();
         User user2 = new User("Juan","juan@mail.com",23,"12as3",1.78,76,'M');
 
-        Libreria.imprime("Bienvenido, ingresa los siguientes datos.");
+        Libreria.imprime("****Bienvenido al registro****\nIngresa los datos siguientes.");
         user1.setUserName(Libreria.capturaTexto("Nombre: "));
         user1.setEmail(Libreria.capturaTexto("Email: "));
         user1.setAge(Libreria.capturaEntero("Edad: ",0,100));
@@ -37,16 +47,24 @@ public class PruebaProyecto{
         user1.setSex(Libreria.capturaChar("Sexo(F/M): "));
         user1.setWeight(Libreria.capturaDoble("Peso: ",0,1000));
         user1.setHeight(Libreria.capturaDoble("Estatura(en metros): ",0,1000));
+        user1.setIdUser(1);
         user1.setImc();
+        System.out.println("Registro: "+user1.signin());
+
+        Libreria.imprime("****Prueba de inicio de sesión****");
+        System.out.println("Inicio: "+user1.login(Libreria.capturaTexto("Usuario: "),Libreria.capturaTexto("Contraseña: ")));
+        System.out.println();
 
         user2.setImc();
         Libreria.imprime("Creacion de usuario con nombre: "+user2.getUserName());
-		System.out.printf("imc de %s: %.1f\n",user2.getUserName(),user2.getImc());
-        System.out.printf("tu imc: %.1f\n",user1.getImc());
-
-        Libreria.imprime("***********************");
+		System.out.printf("IMC de %s: %.1f\n",user2.getUserName(),user2.getImc());
+        System.out.printf("Tu IMC: %.1f\n",user1.getImc());
+        Libreria.imprime("El usuario "+user2.getUserName()+" es igual a "+user1.getUserName()
+                         +": "+user1.equals(user2));
+        System.out.println();
+        Libreria.imprime("********************************");
         Libreria.imprime(user1.toString());
-        Libreria.imprime("***********************");
+        Libreria.imprime("********************************");
         Libreria.imprime(user2.toString());
 
 

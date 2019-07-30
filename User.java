@@ -108,20 +108,20 @@ public class User{
 	public void setFrecuency(int freq){
 		this.frecuency = freq;
 	}
+	public void setIdUser(int id){
+		this.idUser = id;
+	}
 
 	/*Obtiene los datos del usuario de la BD si no enccuentra de acuerdo al nombre y a la contraseña manda
 		manda false que quiere decir que no esta registrado en el sistema
 		*/
 	public boolean login(String name, String pass){
-		// String[] datos = null;// select * from user where user_name = name and password = pass;
-		// if(datos == null)
-			// return false;
-		// else
+		/*String[] datosUser = {"Juan","12as3"};//Obtenidos de la base de datos
+		if(name==datosUser[0] && pass==datosUser[1])*/
 			return true;
-
 	}
 
-	public void signin(){// metodo que puede guardar los datos del usuario en la base de datos
+	public boolean signin(){// metodo que puede guardar los datos del usuario en la base de datos
 		/*String querySignin = "INSERT INTO user VALUES("+
 							 this.idUser + ", " +
 							 this.userName + ", " +
@@ -132,8 +132,16 @@ public class User{
 							 this.sex + ", " +
 							 this.imc + ");";
 		System.out.println(querySignin);*/
+		return true;
 	}
 
+	public boolean equals(User other){
+		if(this.userName.equals(other.userName)&&this.password.equals(other.password) ||
+			this.idUser==other.idUser||this.email.equals(other.email))
+			return true;
+		else
+			return false;
+	}
 	@Override
 	public String toString(){
 		String infoUser = "***Información del usuario***\n" +
