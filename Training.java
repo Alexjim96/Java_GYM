@@ -6,33 +6,48 @@ public class Training{
   private Goal goal;              // Meta
   private Date date;              // Fecha
   private float timePerDay;       // Tiempo al día, medido en horas
-  private Excercises exercise;   // Ejercicio
+  private Excercises []exercise;   // Ejercicios
   private double burnedCalories;  // Calorias quemadas
 
   /* Métodos constructores */
   public Training(){
-    this.goal = new Goal();  // Debería ser un arreglo de metas?
-    this.date = new Date();
-    this.timePerDay =  (float) 3.5;
-    this.exercise = new Excercises();  // También debería ser un arreglo?
-    this.burnedCalories = 0;
+    goal = new Goal();  // Debería ser un arreglo de metas?
+    date = new Date();
+    timePerDay = 0;
+    exercise = new Excercises[5];  // También debería ser un arreglo?
+    for (int i = 0; i < exercise.length ;i++ ) {
+      exercise[i] = new Excercises();  // Inicialización del arreglo con ejercicios por default
+    }
+    burnedCalories = 0;
   }
 
-  public Training(double weight, int height, char sex, int age, String frequency){
-    // ¿Cómo manejar los datos de este constructor?
+  public Training(Goal meta, float tiempo, Excercises []ejercicios){
+    goal = meta;
+    date = meta.getEstimatedTime();
+    timePerDay = tiempo;
+    exercise = ejercicios;
+    /* Falta el cálculo de las calorias pero se necesitan los datos de la clase usuario */
   }
 
-  public double calculatedBurnedCalories(double weight, int height, char sex, String frequency){
+  public double calculatedBurnedCalories(double weight, int height, char sex, int age){
     /* Función que calcula las calorias quemadas */
-    return 5.5; 
+    double cal = 0;
+    if (sex == 'M') {
+      cal = (13.75 * weight) + (5 * height) - (6.76 * age) + 66; 
+     }
+     else{
+      cal = (9.56 * weight) + (1.85 * height) - (4.68 * age) + 655;
+     }
+     return cal; 
   }
 
   /* Métodos set */
   public void setGoal(Goal meta){
     this.goal = meta;
+    setDate(meta);
   }
-  public void setDate(Date fec){
-    this.date = fec;
+  public void setDate(Goal meta){
+    this.date = meta.getEstimatedTime();
   }
   public void setTimePerDay(float num){
     this.timePerDay = num;
@@ -41,8 +56,8 @@ public class Training{
     this.burnedCalories = num;
   }
   /* Método para definir los ejercicios del plan de entrenamiento */
-  public void setExcercise(Excercises other){
-    this.exercise = other;
+  public void setExcercise(Excercises other , int ind){
+    this.exercise[ind] = other;
   }
 
   /* Métodos get */
@@ -58,7 +73,10 @@ public class Training{
   public double getBurnedCalories(){
     return this.burnedCalories;
   }
-  public Excercises getExcercises(){
+  public Excercises getExcercises(int ind){
+    return this.exercise[ind];
+  }
+  public Excercises [] getExcercises(){
     return this.exercise;
   }
 
@@ -71,6 +89,7 @@ public class Training{
     if (this.timePerDay != other.timePerDay) {
       ban = false;
     }
+    /* Falta modificar para revisar los ejercicios uno por uno */
     if (!(this.exercise.equals(other.exercise))) {
       ban = false;
     }
@@ -78,14 +97,16 @@ public class Training{
   }
 
   /* Método toString */
-  public String toString(String usuario){
+  public String toString(){
     String message;
-    String respNameExcercise;
-    message = "Este es el plan de entrenamiento de " + usuario + "\n";
+    String respNameExcercise = "";
+    message = "Se presenta la iformació del plan de entrenamiento: \n";
     message += "El plan consiste en los siguientes ejercicios:\n";
-    respNameExcercise = this.exercise.getName();
+    for (int i = 0 ; i < this.exercise.length ;i++ ) {
+      respNameExcercise += this.exercise[i].getName() + "\n";
+    }
     message += respNameExcercise + "\n";
-
+    message += "La meta de este plan es: " + this.goal.getName();
     return message;
   }
 }  // Fin clase

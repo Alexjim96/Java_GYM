@@ -11,12 +11,33 @@ public class Excercises{
 
      /* Métodos constructores */
      public Excercises(){
-       this.numSeries = 0;
-       this.repetition = 0;
-       this.machine = "Default";
-       this.type = "Default";
-       this.warmup = "Default";
-       this.name = "Default";
+       numSeries = 0;
+       repetition = 0;
+       machine = "Default";
+       type = "Default";
+       warmup = "Default";
+       name = "Default";
+     }
+     public Excercises(String nombre, int series, int repeticiones, String maquina, int tipo, String calentamiento){
+       name = nombre;
+       numSeries = series;
+       repetition = repeticiones;
+       machine = maquina;
+       switch (tipo) {
+        case 1:
+          type = "Aerobio";
+        break;
+        case 2:
+          type = "Resistencia";
+        break;
+        case 3:
+          type = "Fuerza";
+        break;
+        default:
+          type = "Default";
+        break; 
+       }
+       warmup = calentamiento;
      }
 
      /* Métodos set */
@@ -32,8 +53,21 @@ public class Excercises{
      public void setMachine(String nombre){
        this.machine = nombre;
      }
-     public void setType(String nombre){
-       this.type = nombre;
+     public void setType(int tipo){
+       switch (tipo) {
+        case 1:
+          this.type = "Aerobio";
+        break;
+        case 2:
+          this.type = "Resistencia";
+        break;
+        case 3:
+          this.type = "Fuerza";
+        break;
+        default:
+          this.type = "Default";
+        break; 
+       }
      }
      public void setWarmup(String nombre){
        this.warmup = nombre;
@@ -83,10 +117,10 @@ public class Excercises{
      /* Método toString */
      public String toString(){
        String message;
-       message = "Este es el ejercicio " + this.name + "\n";
-       message += "Es del tipo " + this.type + "\n";
-       message += "Se realiza en la máquina " + this.machine + "\n";
-       message += "Se hacen " + this.numSeries + " de " + this.repetition + " repeticiones.";
+       message = "Este es el ejercicio: " + this.name + "\n";
+       message += "Es del tipo: " + this.type + "\n";
+       message += "Se realiza en la máquina: " + this.machine + "\n";
+       message += "Se hacen " + this.numSeries + " series de " + this.repetition + " repeticiones.";
        return message;
      }
 
