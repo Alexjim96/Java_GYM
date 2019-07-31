@@ -29,13 +29,13 @@ public class User{
 
 	}
 	public User(String userName, String email, int age, String password, double height, double weight, char sex){
-	    this.userName = userName;
-	    this.email    = email;
-		this.age      = age;
-		this.password = password;
-		this.height   = height;
-		this.weight   = weight;
-		this.sex      = sex;
+	    this.setUserName(userName);
+	    this.setEmail(email);
+		this.setAge(age);
+		this.setPassword(password);
+		this.setHeight(height);
+		this.setWeight(weight);
+		this.setSex(sex);
 }
 	//getters
 	public String getUserName(){
@@ -90,6 +90,8 @@ public class User{
 	public void setPassword(String pass){
 		if(pass.length()>=8)
 			this.password = pass;
+		else
+			this.password = "NA";
 	}
 	public void setHeight(double height){
 		this.height = height;
@@ -100,6 +102,8 @@ public class User{
 	public void setSex(char sex){
 		if(sex == 'M' || sex == 'F')
 			this.sex = sex;
+		else
+			sex = 'N';
 	}
 	public void setImc(){
 		if(this.weight > 0 && this.height > 0)
@@ -134,7 +138,24 @@ public class User{
 		System.out.println(querySignin);*/
 		return true;
 	}
-
+	public boolean recoverPassword(String newPass){
+		//manda email al Usuario
+		this.setPassword(newPass);
+		if(this.getPassword().equals("NA"))
+				return false;
+		else
+			return true;
+	}
+	public String getTrainPlan(){
+		int idUser = this.idUser;
+		Training us = new Training();
+		return(us.toString(this.userName));
+	}
+	// Descomentar cuando FoodPlan este completa y sin errores
+	// public String getFoodPlan(int idUser){
+	// 	FoodPlan us = new FoodPlan();
+	// 	return(us.toString());
+	// }
 	public boolean equals(User other){
 		if(this.userName.equals(other.userName)&&this.password.equals(other.password) ||
 			this.idUser==other.idUser||this.email.equals(other.email))
