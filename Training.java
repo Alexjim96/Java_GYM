@@ -1,5 +1,5 @@
 import java.util.*;
-public class Training{
+public class Training implements IBaseDatos{
   /* Clase Training: En esta clase se define el plan de entrenamiento de cada
      usuario. */
 
@@ -21,15 +21,15 @@ public class Training{
     burnedCalories = 0;
   }
 
-  public Training(Goal meta, float tiempo, Excercises []ejercicios){
+  public Training(Goal meta, float tiempo, Excercises []ejercicios, User usuario){
     goal = meta;
     date = meta.getEstimatedTime();
     timePerDay = tiempo;
     exercise = ejercicios;
-    /* Falta el cálculo de las calorias pero se necesitan los datos de la clase usuario */
+    burnedCalories = calculatedBurnedCalories(usuario.getWeight(),usuario.getHeight(), usuario.getSex(),usuario.getAge());
   }
 
-  public double calculatedBurnedCalories(double weight, int height, char sex, int age){
+  public double calculatedBurnedCalories(double weight, double height, char sex, int age){
     /* Función que calcula las calorias quemadas */
     double cal = 0;
     if (sex == 'M') {
@@ -62,7 +62,7 @@ public class Training{
 
   /* Métodos get */
   public String getGoal(){
-    return this.goal.toString();
+    return this.goal.getName();
   }
   public Date getDate(){
     return this.date;
@@ -83,15 +83,27 @@ public class Training{
   /* Método equals */
   public boolean equals(Training other){
     boolean ban = true;
+    if (!(this.goal.getName().equals(other.goal.getName()))) {
+    	ban = false;
+    }
     if (!(this.date.equals(other.date))) {
       ban = false;
     }
     if (this.timePerDay != other.timePerDay) {
       ban = false;
     }
-    /* Falta modificar para revisar los ejercicios uno por uno */
-    if (!(this.exercise.equals(other.exercise))) {
-      ban = false;
+    /* Se puede revisar unicamente el tamaño y el orden de los elementos ya que 
+       una vez se implemente la base de datos, el sistema asignará los ejercicios */
+    if (this.exercise.length != other.exercise.length) {
+    	ban = false;
+    }
+    else{
+    	for (int i = 0; i < this.exercise.length ; i++ ) {
+    		if (!(this.exercise[i].getName().equals(other.exercise[i].getName()))) {
+    			ban = false;
+    			break;
+    		}
+    	}
     }
     return ban;
   }
@@ -105,8 +117,34 @@ public class Training{
     for (int i = 0 ; i < this.exercise.length ;i++ ) {
       respNameExcercise += this.exercise[i].getName() + "\n";
     }
-    message += respNameExcercise + "\n";
+    message += respNameExcercise;
     message += "La meta de este plan es: " + this.goal.getName();
     return message;
+  }
+  public String toString(String usuario){
+    String message;
+    String respNameExcercise = "";
+    message = "Se presenta la iformació del plan de entrenamiento de: " + usuario + " \n";
+    message += "El plan consiste en los siguientes ejercicios:\n";
+    for (int i = 0 ; i < this.exercise.length ;i++ ) {
+      respNameExcercise += this.exercise[i].getName() + "\n";
+    }
+    message += respNameExcercise;
+    message += "La meta de este plan es: " + this.goal.getName();
+    return message;
+  }
+
+  /* Interacción con la base de datos */
+  public boolean insertData(){
+  	return false;
+  }
+  public boolean selectData(){
+  	return false;
+  }
+  public boolean deleteData(){
+  	return false;
+  }
+  public boolean updateData(){
+  	return false;
   }
 }  // Fin clase

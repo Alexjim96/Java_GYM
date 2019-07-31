@@ -1,11 +1,17 @@
 import java.util.*;
-public class Goal{
+import java.text.SimpleDateFormat;
+public class Goal implements IBaseDatos{
   /* Clase Goal que define las metas de cada uno de los usuarios. */
   private Date estimatedTime;  // Tiempo estimado
   private boolean state;       // Estado (cumplida, no cumplida)
   private String name;         // Nombre de la meta
   private String []names = {"Ganar masa muscular", "Perder peso", "Mantener peso"};  // Nombre de la meta ( Definir un arreglo que contenga varios nombres
                                // de metas)
+
+  /* Creación del formato para las fechas manejadas */
+  SimpleDateFormat formatoEsMX = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy", new Locale("ES", "MX"));
+    
+
   /* Métodos constructores */
   public Goal(){
     estimatedTime = new Date();
@@ -81,9 +87,23 @@ public class Goal{
   public String toString(){
     String message;
     message = "Esta es la meta " + this.name + "\n";
-    message += "Se tiene previsto cumplirla el: " + this.estimatedTime + "\n";
-    message += (this.state)? "La meta se ha cumplido." : "La meta aún no se cumple";
+    message += "Se tiene previsto cumplirla el: " + formatoEsMX.format(this.estimatedTime) + "\n";
+    message += (this.state)? "La meta se ha cumplido" : "La meta aún no se cumple";
     message += ".\n";
     return message;
+  }
+
+  /* Interacción con la base de datos */
+  public boolean insertData(){
+    return false;
+  }
+  public boolean selectData(){
+    return false;
+  }
+  public boolean deleteData(){
+    return false;
+  }
+  public boolean updateData(){
+    return false;
   }
 }
