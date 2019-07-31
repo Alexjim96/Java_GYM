@@ -3,7 +3,7 @@
 	se implementa todo lo necesario que debe tener un usuario
 	en el sistema
 */
-public class User{
+public class User implements IBaseDatos{
 	private String userName;
 	private String email;
 	private int age;
@@ -122,7 +122,7 @@ public class User{
 	public boolean login(String name, String pass){
 		/*String[] datosUser = {"Juan","12as3"};//Obtenidos de la base de datos
 		if(name==datosUser[0] && pass==datosUser[1])*/
-			return true;
+			return selectData();
 	}
 
 	public boolean signin(){// metodo que puede guardar los datos del usuario en la base de datos
@@ -136,7 +136,7 @@ public class User{
 							 this.sex + ", " +
 							 this.imc + ");";
 		System.out.println(querySignin);*/
-		return true;
+		return insertData();
 	}
 	public boolean recoverPassword(String newPass){
 		//manda email al Usuario
@@ -156,6 +156,18 @@ public class User{
 	// 	FoodPlan us = new FoodPlan();
 	// 	return(us.toString());
 	// }
+	public boolean insertData(){
+		return true;
+	}
+	public boolean selectData(){
+		return true;
+	}
+	public boolean deleteData(){
+		return true;
+	}
+	public boolean updateData(){
+		return true;
+	}
 	public boolean equals(User other){
 		if(this.userName.equals(other.userName)&&this.password.equals(other.password) ||
 			this.idUser==other.idUser||this.email.equals(other.email))
