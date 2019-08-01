@@ -40,8 +40,10 @@ public class PruebaProyecto{
                     pruebaTraining();
                     break;
                 case 5:
+                	pruebaFood();
                     break;
                 case 6:
+                	pruebaDietGoal();
                     break;
                 case 7:
                     break;
@@ -276,6 +278,33 @@ public class PruebaProyecto{
 
         Libreria.imprime("Los planes de entrenamiento default y 1 son iguales (En este punto ya son iguales)?");
         Libreria.imprime((planDefault.equals(plan1))? "Si" : "No");
+        Libreria.capturaTexto("Presiona enter...");
+    }
+    public static void pruebaDietGoal(){
+    	DietGoal metaAlimento1 = new DietGoal();
+        DietGoal metaAlimento2 = new DietGoal();
+        metaAlimento1.countDietGoals("pastel");
+        metaAlimento1.countDietGoals("pastel");
+        metaAlimento1.countDietGoals("pastel");
+        metaAlimento2.setFoodName("aguacate");
+        metaAlimento2.setState(false);
+
+
+        Libreria.imprime("**********   Metas Alimenticias   **********");
+        Libreria.imprime(metaAlimento1.countDietGoals("pastel"));
+        Libreria.imprime(metaAlimento2.toString());
+        Libreria.capturaTexto("Presiona enter...");
+    }
+    public static void pruebaFood(){
+    	Food alimento1 = new Food();
+        Food alimento2 = new Food();
+        alimento1.setFoodName("manzana");
+        alimento1.setQuantity("1/2 taza");
+        alimento1.setCaloriesPerSlice(123.4);
+        alimento1.setType(4);
+        alimento1.setGroup(5);
+        Libreria.imprime("**********   Alimentos   **********");
+        Libreria.imprime(alimento1.toString());
         Libreria.capturaTexto("Presiona enter...");
     }
 
