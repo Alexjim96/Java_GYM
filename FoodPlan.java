@@ -4,59 +4,62 @@ import java.util.*;
         Alejandro Jiménez Jiménez
         Daniel Alejandro López Hernández
  */
-public class FoodPlan{
+public class FoodPlan extends Food{
     //Atributos
      private int idUser;                                    // Identificador de ususario
-     private String[] foodType = new foodType[5];           // Declaracion y creacion del array  tipo de comida
      private double consumedCalories;                       // Calorias consumidas
-     private double caloriesPerDay;                         //Calorias por día
+     private double caloriesPerDay;                         // Calorias por día
+     private Food food1=new Food();                                   // Alimentos
 
     //Constructor
      public FoodPlan(){
-       this.foodName = "NA";
-       this.quantity = "";
-       this.caloriesPerSlice = 0;
-       String[] foodGroup = {"Aceites y Grasas", "Alimentos libres", "AOA", "Azucares","Cereales","Fruta","Lacteos","Leguminosas","Verdura"};
-       String[] foodType = {"Desayuno", "Colacion1", "Comida", "Colacion2","Cena"};
-     }
+       this.setConsumedCalories(0);
+       this.setCaloriesPerDay(0);
+       }
 
     // Seters
-     public void setFoodType(String[] tipo){
-         this.foodType = tipo;
+     public void setConsumedCalories(double cal){
+       this.consumedCalories = cal;
      }
-     public void setFoodName(String alimento){
-       this.foodName = alimento;
-     }
-     public void setQuantity(String quantity){
-       this.quantity = quantity;
-     }
-     public void setCaloriesPerSlice (double calorias){
-        this.caloriesPerSlice = calorias;
+     public void setCaloriesPerDay(double calorias){
+        this.caloriesPerDay = calorias;
      }
 
     //Geters
-     public String getName(){
-       return this.name;
+     public double getConsumedCalories(){
+       return this.consumedCalories;
      }
-     public int getNumSeries(){
-      return this.numSeries;
-     }
-     public int getRepetition(){
-        return this.repetition;
-     }
-     public String getMachine(){
-      return this.machine;
-     }
-     public String[] getFoodType(){
-      return tipo;
+     public double getCaloriesPerDay(){
+      return this.caloriesPerDay;
      }
 
     //toString 
      public String toString(){
        String message;
-       message = this.quantity + " del alimento " + this.foodName ;
-       message += " contiene " + this.caloriesPerSlice + "calorias \n";
+       message = " del alimento ";
+       message += " debe consumir " + this.caloriesPerDay + "de las cuales, consumio" + this.consumedCalories;
        return message;
      }
-
+  //equals 
+    public boolean equals(FoodPlan other){
+      boolean var = true;
+      if (this.consumedCalories != other.consumedCalories) {
+        var = false;
+      }
+      if (this.caloriesPerDay != other.caloriesPerDay) {
+        var = false;
+      }
+      return var;
+    }
+    //Metodos
+     public double calculateConsumedCalories(double weight, int height, char sex, int age){
+     double caloriasC = 0;
+    if (sex == 'H') {
+      caloriasC = 66.473 + (13.751 * weight) + (5.0033 * height) – (6.7550 * age);
+     }
+     else{
+      caloriasC = 655.1 + (9.463 * weight) + (1.85 * height) - (4.6756  * age);
+     }
+     return caloriasC; 
+  }
 }
