@@ -1,5 +1,5 @@
 import java.util.*;
-public class Excercises implements IBaseDatos{
+final class Excercises implements IBaseDatos{
   /* Clase Excercises que define todos los ejercicios que conforman un plan default:
      entrenamiento. */
      private String name;     // Nombre del ejercicio
@@ -120,7 +120,8 @@ public class Excercises implements IBaseDatos{
        message = "Este es el ejercicio: " + this.name + "\n";
        message += "Es del tipo: " + this.type + "\n";
        message += "Se realiza en la máquina: " + this.machine + "\n";
-       message += "Se hacen " + this.numSeries + " series de " + this.repetition + " repeticiones.";
+       message += "Se hacen " + this.numSeries + " series de " + this.repetition + " repeticiones.\n";
+       message += "Su calentamiento es: " + this.warmup;
        return message;
      }
 

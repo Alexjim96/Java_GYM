@@ -1,16 +1,15 @@
 import java.util.*;
 import java.text.SimpleDateFormat;
-public class Goal implements IBaseDatos{
+final class Goal implements IBaseDatos{
   /* Clase Goal que define las metas de cada uno de los usuarios. */
   private Date estimatedTime;  // Tiempo estimado
   private boolean state;       // Estado (cumplida, no cumplida)
   private String name;         // Nombre de la meta
-  private String []names = {"Ganar masa muscular", "Perder peso", "Mantener peso"};  // Nombre de la meta ( Definir un arreglo que contenga varios nombres
-                               // de metas)
+  /* El siguiente arreglo es provisional, se eliminará una vez que se tenga la tabla correspondiente de la base de datos */
+  private String []names = {"Ganar masa muscular", "Perder peso", "Mantener peso"};  // Nombres validos para las metas
 
   /* Creación del formato para las fechas manejadas */
   SimpleDateFormat formatoEsMX = new SimpleDateFormat("EEEE d 'de' MMMM 'de' yyyy", new Locale("ES", "MX"));
-    
 
   /* Métodos constructores */
   public Goal(){
@@ -24,10 +23,10 @@ public class Goal implements IBaseDatos{
     calendario.setTime(estimatedTime);
     switch (op) {
       case 0:
-          calendario.add(Calendar.DAY_OF_YEAR,10);
-          estimatedTime = calendario.getTime();
-          state = false;
-          name = names[op];
+        calendario.add(Calendar.DAY_OF_YEAR,10);
+        estimatedTime = calendario.getTime();
+        state = false;
+        name = names[op];
       break;
       case 1:
         calendario.add(Calendar.DAY_OF_YEAR,20);
@@ -58,6 +57,9 @@ public class Goal implements IBaseDatos{
   }
   public void setState(boolean val){
     this.state = val;
+  }
+  public void setName(String nombre){
+    this.name = nombre;
   }
 
   /* Métodos get */

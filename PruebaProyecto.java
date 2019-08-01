@@ -110,26 +110,12 @@ public class PruebaProyecto{
 
         Libreria.capturaTexto("Presiona enter...");
     }
-    
     public static void pruebaExcercises(){
         /* Prueba de la clase Excercises */
         Libreria.imprime("\t\t\t***** Prueba de la clase Excercises *****");
-        Libreria.imprime("Creación de múltiples ejercicios usando los constructores con parámetros y default:");
         Excercises ejDefault = new Excercises();  // Ejercicio con constructor por default
         Excercises ejerc1 = new Excercises("Pesas", 5, 10, "Banco", 3, "Peso de 5Kg");
-        Excercises ejerc2 = new Excercises("Press de pecho", 5, 10, "Banco", 3, "Peso de 5Kg");
-        Excercises ejerc3 = new Excercises("Press de pierna", 5, 10, "Banco", 3, "Peso de 5Kg");
-        Excercises ejerc4 = new Excercises("Press de tricep", 5, 10, "Banco", 3, "Peso de 5Kg");
-        Excercises ejerc15 = new Excercises("Mancuernas", 5, 10, "Banco", 3, "Peso de 5Kg");
         Excercises ejerc5 = new Excercises("Remo", 5, 10, "Poleas", 2, "Peso de 5Kg");
-        Excercises ejerc6 = new Excercises("Caminar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc7 = new Excercises("Correr", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc8 = new Excercises("Trotar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc9 = new Excercises("Nadar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc10 = new Excercises("Saltar cuerda", 5, 10, "N/A", 1, "Peso de 5Kg");
-        Excercises ejerc11 = new Excercises("Bicicleta", 5, 10, "Bicicletas", 1, "Peso de 5Kg");
-        Excercises ejerc12 = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
-        Excercises ejerc13 = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
         Excercises ejerc14 = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
         /* Prueba del método toString */
         Libreria.imprime("Datos de 4 ejercicios distintos (incluyendo el creado con el constructor sin parámetros) usando toString:");
@@ -137,8 +123,8 @@ public class PruebaProyecto{
         Libreria.imprime(ejerc1.toString());
         Libreria.imprime(ejerc5.toString());
         Libreria.imprime(ejerc14.toString());
-        
-        /* Prueba de métodos Set y Get 
+
+        /* Prueba de métodos Set y Get
            Para probar estos métodos se corregirá la información del ejercicio 14
            que es creado con el nombre Croisant */
         Libreria.imprime("Uso de los métodos set para cambiar los atributos del ejercicio llamado Croisant");
@@ -157,13 +143,22 @@ public class PruebaProyecto{
         Libreria.imprime("En el ejercicio 14 cada serie es de: " + ejerc14.getRepetition() + " repeticiones" );
         Libreria.imprime("El ejercicio 14 se hace en la maquina: " + ejerc14.getMachine());
         Libreria.imprime("El Calentamiento del ejercicio 14 es: " + ejerc14.getWarmup());
-        
+
         /* Prueba del método equals de la clase Excercises */
         Libreria.imprime("Prueba de los métodos equals:");
         Libreria.imprime("Comparación ejercicios 1 y 14 (no son iguales.)");
         Libreria.imprime((ejerc14.equals(ejerc1))? "Son iguales." : "No son iguales.");
-        Libreria.imprime("Comparación ejercicios 12 y 13 (son iguales.)");
-        Libreria.imprime((ejerc12.equals(ejerc13))? "Son iguales." : "No son iguales.");
+        Libreria.imprime("Se cambian los datos de ejercicio default para que coincidan con el ejercicio 14");
+
+        ejDefault.setName("Crossfit");
+        ejDefault.setNumSeries(3);
+        ejDefault.setRepetition(0);
+        ejDefault.setMachine("N/A");
+        ejDefault.setType(2);
+        ejDefault.setWarmup("Calentamiento ligero.");
+
+        Libreria.imprime("Comparación ejercicios 14 y default (son iguales.)");
+        Libreria.imprime((ejerc14.equals(ejDefault))? "Son iguales." : "No son iguales.");
         Libreria.capturaTexto("Presiona enter...");
     }
     public static void pruebaGoal(){
@@ -217,23 +212,13 @@ public class PruebaProyecto{
         /* Meta default */
         Goal metaDefT = new Goal();
 
-        Excercises ejDefaultT = new Excercises();  // Ejercicio con constructor por default
         Excercises ejerc1T = new Excercises("Pesas", 5, 10, "Banco", 3, "Peso de 5Kg");
         Excercises ejerc2T = new Excercises("Press de pecho", 5, 10, "Banco", 3, "Peso de 5Kg");
         Excercises ejerc3T = new Excercises("Press de pierna", 5, 10, "Banco", 3, "Peso de 5Kg");
         Excercises ejerc4T = new Excercises("Press de tricep", 5, 10, "Banco", 3, "Peso de 5Kg");
         Excercises ejerc15T = new Excercises("Mancuernas", 5, 10, "Banco", 3, "Peso de 5Kg");
-        Excercises ejerc5T = new Excercises("Remo", 5, 10, "Poleas", 2, "Peso de 5Kg");
-        Excercises ejerc6T = new Excercises("Caminar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc7T = new Excercises("Correr", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc8T = new Excercises("Trotar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc9T = new Excercises("Nadar", 5, 10, "Caminadora", 2, "Peso de 5Kg");
-        Excercises ejerc10T = new Excercises("Saltar cuerda", 5, 10, "N/A", 1, "Peso de 5Kg");
-        Excercises ejerc11T = new Excercises("Bicicleta", 5, 10, "Bicicletas", 1, "Peso de 5Kg");
-        Excercises ejerc12T = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
-        Excercises ejerc13T = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
-        Excercises ejerc14T = new Excercises("Croisant", 5, 10, "N/A", 1, "Peso de 5Kg");
-        User user3 = new User("Javier","javier@mail.com",23,"12as3",1.78,76,'M');
+
+        User user3 = new User("Javier","abc123@mail.com",23,"12as3",1.78,76,'M');
         /* Prueba de constructores */
         Libreria.imprime("\t\t\t***** Prueba de la clase Training *****");
         Training planDefault = new Training();  // Constructor por default
@@ -246,9 +231,9 @@ public class PruebaProyecto{
         Training plan1 = new Training(meta1T, 5, arrPlan1, user3);  // Constructor con parámetros
         /* Prueba del método toString */
         Libreria.imprime("Información del plan creado a partir del constructor sin parámetros (plan default):");
-        Libreria.imprime(planDefault.toString());
+        Libreria.imprime(planDefault.toString("Sin usuario"));
         Libreria.imprime("Información del plan creado a partir del constructor con parámetros (plan1):");
-        Libreria.imprime(plan1.toString());
+        Libreria.imprime(plan1.toString(user3.getUserName()));
 
         /* Prueba de métodos set y get */
         Libreria.imprime("En este punto se utilizarán los métodos set y get para cambiar los atributos del plan default.");
@@ -261,7 +246,7 @@ public class PruebaProyecto{
         planDefault.setExcercise(ejerc4T,3);
         planDefault.setExcercise(ejerc15T,4);
 
-        /* Impresión de la información del plan default a través de 
+        /* Impresión de la información del plan default a través de
            los métodos get */
         Libreria.imprime("Nueva información del plan default obtenida a través de los métodos get: ");
         Libreria.imprime("La meta del plan default es: " + planDefault.getGoal());
@@ -293,5 +278,5 @@ public class PruebaProyecto{
         Libreria.imprime((planDefault.equals(plan1))? "Si" : "No");
         Libreria.capturaTexto("Presiona enter...");
     }
-       
+
 }
