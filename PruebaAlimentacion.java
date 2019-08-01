@@ -20,9 +20,13 @@ class PruebaAlimentacion {
     // Prueba Food
             Food alimento1 = new Food();
             Food alimento2 = new Food();
+            alimento1.setFoodName("manzana");
+            alimento1.setQuantity("1/2 taza");
+            alimento1.setCaloriesPerSlice(123.4);
+            alimento1.setType(4);
+            alimento1.setGroup(5);
             Libreria.imprime("**********   Alimentos   **********");
-            Libreria.imprime(metaAlimento1.countDietGoals("pastel"));
-            Libreria.imprime(metaAlimento2.toString());
+            Libreria.imprime(alimento1.toString());
 
     }
 }

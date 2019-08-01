@@ -6,54 +6,109 @@ import java.util.*;
  */
 public class Food extends FoodPlan{
     //Atributos
-     private String[] foodGroup = new foodGroup[9];         // Declaracion y creacion del array Grupo Alimenticio
-     private String[] foodType = new foodType[5];           // Declaracion y creacion del array  tipo de comida
+     private String[] foodGroup = {"Aceites y Grasas", "Alimentos libres", "AOA", "Azucares","Cereales","Fruta","Lacteos","Leguminosas","Verdura"};         // Declaracion y creacion del array Grupo Alimenticio
+     private String[] foodType={"Desayuno", "Colacion1", "Comida", "Colacion2","Cena"};                      // Declaracion y creacion del array  type de comida
      private String foodName;                               // Nombre del alimento
      private String quantity;                               // Cantidad
      private double caloriesPerSlice;                       //Calorias por porcion
-
-    //Constructor
-     public Food(){
-       this.foodName = "NA";
-       this.quantity = "";
-       this.caloriesPerSlice = 0;
-       String[] foodGroup = {"Aceites y Grasas", "Alimentos libres", "AOA", "Azucares","Cereales","Fruta","Lacteos","Leguminosas","Verdura"};
-       String[] foodType = {"Desayuno", "Colacion1", "Comida", "Colacion2","Cena"};
-     }
-
+     private String type;
+     private String group;
+     
+     
     // Seters
-     public void setFoodType(String[] tipo){
-         this.foodType = tipo;
-     }
      public void setFoodName(String alimento){
        this.foodName = alimento;
      }
      public void setQuantity(String quantity){
        this.quantity = quantity;
      }
+     public void setType(int tipo){
+        switch(tipo){
+            case 1:
+              this.type= foodType[0];
+            break; 
+            case 2:
+              this.type= foodType[1];
+            break;
+            case 3:
+              this.type= foodType[2];
+            break;
+            case 4:
+              this.type= foodType[3];
+            break;
+            case 5:
+              this.type= foodType[4];
+            break;
+        }
+      }
+
+      public void setGroup(int grupo){
+        switch(grupo){
+            case 1:
+              this.group= foodGroup[0];
+            break; 
+            case 2:
+              this.group= foodGroup[1];
+            break;
+            case 3:
+              this.group= foodGroup[2];
+            break;
+            case 4:
+              this.group= foodGroup[3];
+            break;
+            case 5:
+              this.group= foodGroup[4];
+            break;
+            case 6:
+              this.group= foodGroup[5];
+            break;
+            case 7:
+              this.group= foodGroup[6];
+            break;
+            case 8:
+              this.group= foodGroup[7];
+            break;
+            case 9:
+              this.group= foodGroup[8];
+            break;
+        }
+      }
+
      public void setCaloriesPerSlice (double calorias){
         this.caloriesPerSlice = calorias;
      }
 
+
     //Geters
-     public String[] getFoodType(){
-         return tipo;
+     public String getType(){
+       return this.type;
+     }
+     public String getGroup(){
+       return this.group;
      }
      public String getFoodName(){
-       return this.alimento;
+       return this.foodName;
      }
      public String getQuantity(){
-      return this.cantidad;
+      return this.quantity;
      }
      public double getCaloriesPerSlice(){
-        return this.caloriasPorcion;
+        return this.caloriesPerSlice;
+     }
+
+     //Constructor
+     public Food(){
+       this.setFoodName("NA");
+       this.setQuantity("NA");
+       this.setCaloriesPerSlice(0);
      }
 
     //toString 
      public String toString(){
        String message;
-       message = this.quantity + " del alimento " + this.foodName ;
-       message += " contiene " + this.caloriesPerSlice + "calorias \n";
+       message = this.quantity + " de " + this.foodName ;
+       message += " contiene " + this.caloriesPerSlice + " calorias \n";
+       message += "se consumio en "+ this.type +" y es de grupo "+ this.group;
        return message;
      }
 
@@ -71,37 +126,5 @@ public class Food extends FoodPlan{
     }
     return var;
   }
-  	public void rentar(String nombreCliente){//cuando se renta un auto se asigna en nombre del cliente, se cambia el status a rentado, disponible flase, e inicia el kmetraje
-		this.cliente=nombreCliente;
-		this.estaRentado=true;
-		this.disponible=false;
-		this.kilometraje=0;
-		//grabar en la bd
-		
-	}
-	
-	public void devuelve(int kmRecorridos){f//al  regresar un vehiculo, se proporcionará el kilometraje y con base a este se calculara el precio a pagar (kmetraje*2)
-		//si km es negativo no la aceptes
-		if(kmRecorridos>0){
-			double factor =0;
-			this.cliente="no disponible";
-			this.estaRentado=false;
-			this.disponible=true;
-			this.kilometraje=kmRecorridos;
-			if(kmRecorridos>=100)
-				factor=2;
-			else
-				if(kmRecorridos>=1000)
-					factor=2.5;
-				else
-					factor=3;
-			
-			
-			this.precio=kmRecorridos*factor*1.16;
-		}
-		//grabar eb bd
-		
-		
-	}
 
 }
