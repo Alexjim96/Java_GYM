@@ -4,7 +4,7 @@ import java.util.*;
         Alejandro Jiménez Jiménez
         Daniel Alejandro López Hernández
  */
-public class Food extends FoodPlan{
+public class Food {
     //Atributos
      private String[] foodGroup = {"Aceites y Grasas", "Alimentos libres", "AOA", "Azucares","Cereales","Fruta","Lacteos","Leguminosas","Verdura"};         // Declaracion y creacion del array Grupo Alimenticio
      private String[] foodType={"Desayuno", "Colacion1", "Comida", "Colacion2","Cena"};                      // Declaracion y creacion del array  type de comida
