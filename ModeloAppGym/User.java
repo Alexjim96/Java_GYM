@@ -3,7 +3,7 @@
 	se implementa todo lo necesario que debe tener un usuario
 	en el sistema
 */
-public class User implements IBaseDatos{
+public final class User implements IBaseDatos{
 	private String userName;
 	private String email;
 	private int age;
@@ -152,10 +152,10 @@ public class User implements IBaseDatos{
 		return(us.toString(this.userName));
 	}
 	// Descomentar cuando FoodPlan este completa y sin errores
-	// public String getFoodPlan(int idUser){
-	// 	FoodPlan us = new FoodPlan();
-	// 	return(us.toString());
-	// }
+	public String getFoodPlan(int idUser){
+	 	FoodPlan us = new FoodPlan();
+	 	return(us.toString());
+	}
 	public boolean insertData(){
 		return true;
 	}
